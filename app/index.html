@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>Site Launcher</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Начален екран: списък със сайтове -->
+    <section id="home" class="screen">
+        <header>
+            <h1>Site Launcher</h1>
+            <div class="legend">
+                <span class="k red"></span>Добави
+                <span class="k green"></span>Редактирай
+                <span class="k yellow"></span>Изтрий
+                <span class="k blue"></span>Настройки
+            </div>
+        </header>
+        <div id="tiles" class="tiles"></div>
+        <p id="empty" class="empty hidden">Няма сайтове. Натисни червения бутон, за да добавиш.</p>
+    </section>
+
+    <!-- Форма за добавяне/редакция -->
+    <section id="editor" class="screen hidden">
+        <h2 id="editor-title">Нов сайт</h2>
+        <label>Име</label>
+        <input id="f-name" class="nav" type="text" maxlength="40">
+        <label>Адрес (URL)</label>
+        <input id="f-url" class="nav" type="url" placeholder="https://">
+        <label>Режим на отваряне</label>
+        <select id="f-mode" class="nav">
+            <option value="iframe">Вграден (BACK се връща към списъка)</option>
+            <option value="navigate">Директно (за сайтове, които забраняват вграждане)</option>
+        </select>
+        <div class="row">
+            <button id="f-save" class="nav btn primary">Запази</button>
+            <button id="f-cancel" class="nav btn">Отказ</button>
+        </div>
+        <p id="f-error" class="error"></p>
+    </section>
+
+    <!-- Общи настройки -->
+    <section id="settings" class="screen hidden">
+        <h2>Настройки</h2>
+        <label>Сайт при стартиране</label>
+        <select id="s-autostart" class="nav"></select>
+        <label>Таймаут при зареждане (секунди)</label>
+        <select id="s-timeout" class="nav">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="60">60</option>
+        </select>
+        <div class="row">
+            <button id="s-save" class="nav btn primary">Запази</button>
+            <button id="s-reset" class="nav btn danger">Изтрий всички данни</button>
+            <button id="s-back" class="nav btn">Назад</button>
+        </div>
+    </section>
+
+    <!-- Плейър -->
+    <section id="viewer" class="screen hidden">
+        <iframe id="frame" allowfullscreen allow="autoplay; fullscreen"></iframe>
+        <div id="loading" class="overlay">
+            <div id="loading-text">Зареждане…</div>
+            <small id="loading-hint"></small>
+        </div>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
